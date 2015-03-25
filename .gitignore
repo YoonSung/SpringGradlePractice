@@ -3,6 +3,6 @@ build/
 
 .idea
 SpringGradlePractice.iml
-
+*/*.iml
 # Ignore Gradle GUI config
 gradle-app.setting
