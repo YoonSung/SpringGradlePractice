@@ -1,0 +1,3 @@
+rootProject.name = 'SpringGradlePractice'
+
+include ':domain', ':web'
