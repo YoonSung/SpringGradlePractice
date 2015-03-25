@@ -4,5 +4,5 @@ build/
 .idea
 SpringGradlePractice.iml
 */*.iml
-# Ignore Gradle GUI config
+# Ignore Gradle GUI architree.yoon.config
 gradle-app.setting

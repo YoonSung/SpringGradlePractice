@@ -6,11 +6,6 @@
     <display-name>firstGradleProject</display-name>
     <description>Gradle Spring Test</description>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/applicationContext.xml</param-value>
-    </context-param>
-    
     <!-- ============================================================= -->
     <!-- root application context -->
     <!-- ============================================================= -->
@@ -21,11 +16,23 @@
     <!-- ============================================================= -->
     <!-- spring dispatcher servlet -->
     <!-- ============================================================= -->
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>architree.yoon.AppConfig</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>yoon</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
 
     <servlet-mapping>
         <servlet-name>yoon</servlet-name>
@@ -36,7 +43,7 @@
     <!-- welcome file list -->
     <!-- ============================================================= -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>yoon</welcome-file>
     </welcome-file-list>
 
 </web-app>
