@@ -1,34 +1,26 @@
 package architree.yoon.web;
 
-import architree.yoon.domain.User;
 import architree.yoon.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by yoon on 15. 3. 25..
  */
 @Controller
-public class TestController {
+public class HomeController {
 
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+
     @RequestMapping("/")
     public String home() {
+        log.debug("home request {}", "test");
         return "home";
     }
-
-    @RequestMapping("/test")
-    public @ResponseBody String test() {
-        User user = new User("yoonsung", 28);
-        userRepository.save(user);
-        System.out.println("save Success!");
-        User selectedUser = userRepository.findOne((long) 1);
-
-        return selectedUser.toString();
-    }
-
 }
