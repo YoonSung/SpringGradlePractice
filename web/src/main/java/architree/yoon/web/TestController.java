@@ -17,6 +17,11 @@ public class TestController {
     private UserRepository userRepository;
 
     @RequestMapping("/")
+    public String home() {
+        return "home";
+    }
+
+    @RequestMapping("/test")
     public @ResponseBody String test() {
         User user = new User("yoonsung", 28);
         userRepository.save(user);
