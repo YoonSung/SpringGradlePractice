@@ -2,15 +2,12 @@ package architree.yoon.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
- * Created by yoon on 15. 3. 25..
+ * Created by yoon on 15. 3. 31..
  */
 @Configuration
-@Import(value={
-        DBConfig.class
-})
-public class AppConfig {
+@ComponentScan(basePackages = {"architree.yoon.web"})
+public class WebConfig {
 
 }

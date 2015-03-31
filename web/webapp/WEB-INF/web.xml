@@ -24,13 +24,22 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>architree.yoon.AppConfig</param-value>
+        <param-value>architree.yoon.config.AppConfig</param-value>
     </context-param>
 
     <servlet>
         <servlet-name>yoon</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>architree.yoon.config.WebConfig</param-value>
+        </init-param>
     </servlet>
 
 
