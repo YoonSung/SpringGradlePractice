@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.concurrent.Callable;
+
 /**
  * Created by yoon on 15. 3. 25..
  */
@@ -22,5 +24,6 @@ public class HomeController {
     public String home() {
         log.debug("home request {}", "test");
         return "home";
+
     }
 }
