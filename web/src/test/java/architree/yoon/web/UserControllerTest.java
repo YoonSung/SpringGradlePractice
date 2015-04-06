@@ -8,9 +8,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import util.MvcTestUtil;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by yoon on 15. 3. 31..
@@ -32,6 +31,22 @@ public class UserControllerTest {
         mockMvc.perform(get("/user/form"))
                 .andExpect(status().isOk())
                 .andExpect(view().name(expectedViewName))
-                .andExpect(forwardedUrl(WebConfig.RESOLVER_SUFFIX + expectedViewName + WebConfig.RESOLVER_SUFFIX));
+                .andExpect(forwardedUrl(WebConfig.RESOLVER_PREFIX + expectedViewName + WebConfig.RESOLVER_SUFFIX));
+    }
+
+    @Test
+    public void create() throws Exception {
+
+        mockMvc.perform(
+                post("/user")
+                        .param("id", "estrella")
+                        .param("password", "test")
+                        .param("name", "Yoonsung")
+                        .param("age", "28")
+        )
+                .andExpect(model().size(1))
+                .andExpect(model().attributeExists("userName"))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/"));
     }
 }
