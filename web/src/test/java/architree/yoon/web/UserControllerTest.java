@@ -44,8 +44,6 @@ public class UserControllerTest {
                         .param("name", "Yoonsung")
                         .param("age", "28")
         )
-                .andExpect(model().size(1))
-                .andExpect(model().attributeExists("userName"))
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl("/"));
     }

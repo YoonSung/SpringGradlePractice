@@ -10,7 +10,13 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long pid;
+
+    @Column
+    private String id;
+
+    @Column
+    private String password;
 
     @Column
     private String name;
@@ -20,17 +26,18 @@ public class User {
 
     public User(){}
 
-    public User(String name, int age) {
+    public User(String id, String password, String name, int age) {
+        this.id = id;
+        this.password = password;
         this.name = name;
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public boolean isValid() {
+        return true;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
